@@ -8,11 +8,11 @@ This repo contains the source of `cfront` and the `c++filt` demangler. It's curr
 
 ## Build Instructions
 
- - Install `g++`, `gcc`, and `make`
+ - Install `g++-7`, `g++-7-multilib`, and `make`
  - Get SGI `yacc` and qemu-irix (cloning and building Kirby 64 decomp will get you both of these)
  - Build with `make IRIX_ROOT=path/to/kirby64/tools/ido7.1/`
 
 
 ## Contributing
 
- - Pull requests are welcome, since I definitely missed things when converting the ancient pre-standard C++. My test cases work, but there's still a possibility of an uncaught segfault. If you want to try converting files yourself, knock yourself out by getting the original source [here](https://www.softwarepreservation.org/projects/c_plus_plus/cfront/release_3.0.3/source/src/). However, be sure to run `clang-format -i` on the files you change to have them follow a sane coding style.
+ - Pull requests are welcome, especially to get these files compatible with modern g++. Be sure to run `clang-format -i` on the files you change to have them follow a sane coding style. Original non-formatted source files are [here](http://www.softwarepreservation.org/projects/c_plus_plus/cfront/release_3.0.3/source/).
