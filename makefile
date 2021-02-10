@@ -31,7 +31,7 @@ DENSE=
 # The use of RETBUG is nolonger needed with version 2.0 and has been removed.
 # RETBUG was used in 1.* Translator versions to circumvent a C compiler bug.
 
-# Uncomment the next line and add -DLICENSE_MAN to the _int_CCFLAGS
+# Uncomment the next line and add -DLICENSE_MAN to the CCFLAGS
 # if you want to build a version of cfront that uses a license manager
 #
 # The LICENSE_LIBS line will change depending upon where your license
@@ -39,12 +39,15 @@ DENSE=
 
 #LICENSE_LIBS=Location_of_your_library/libsdelic.a
 
+# use these to sanitize/debug the codebase
 SANITIZERS := null,undefined
 # 			  address
-
 # SANITIZE_CCFLAGS = -fsanitize=$(SANITIZERS)
 # SANITIZE_LDFLAGS = -fsanitize=$(SANITIZERS)
-_int_CCFLAGS=-Wall -Wpedantic -I. -std=c++17 -g -m32 -fno-for-scope -fno-operator-names
+
+# WARNING
+# -fno-for-scope isn't available on newer g++ versions
+CCFLAGS=-Wall -Wpedantic -I. -std=c++17 -g -m32 -fno-for-scope -fno-operator-names
 
 # top level makefile modifies the following
 MPMACRO	= PATCH
@@ -52,7 +55,9 @@ MPFILE	= patch
 
 BUILD_DIR = build
 
+# always ran
 DUMMY != mkdir -p $(BUILD_DIR)
+DUMMY != make -C demangler
 
 OFILES	:= alloc.o Bits.o block.o dcl.o dcl2.o dcl3.o dcl4.o \
 		del.o discrim.o error.o expand.o \
@@ -63,8 +68,10 @@ OFILES	:= alloc.o Bits.o block.o dcl.o dcl2.o dcl3.o dcl4.o \
 
 O_FILES := $(foreach file,$(OFILES),$(BUILD_DIR)/$(file:.c=.o))
 
+default: cfront
+
 cfront:	$(O_FILES)
-	$(CC) $(_int_CCFLAGS) $(SANITIZE_LDFLAGS) -o cfront $(O_FILES)
+	$(CC) $(CCFLAGS) $(SANITIZE_LDFLAGS) -o cfront $(O_FILES)
 
 $(O_FILES):	cfront.h token.h typedef.h
 
@@ -72,13 +79,14 @@ y.tab.c:	gram.y
 	$(YACC) gram.y
 
 $(BUILD_DIR)/%.o: %.c
-	$(CC) $(_int_CCFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d -c $< -o $@
+	$(CC) $(CCFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d -c $< -o $@
 
 $(BUILD_DIR)/y.tab.o:	y.tab.c
-	$(CC) -MMD -MP -MT $@ -MF $@.d -DGRAM $(_int_CCFLAGS) -c y.tab.c -o $@
+	$(CC) -MMD -MP -MT $@ -MF $@.d -DGRAM $(CCFLAGS) -c y.tab.c -o $@
 
 clean:
 	rm -f -r $(BUILD_DIR) y.tab.c
+	make -C demangler clean
 
 cpio:	
 	find alloc.c Bits.c block.c dcl.c dcl2.c dcl3.c dcl4.c del.c discrim.c \
@@ -93,5 +101,8 @@ cpio:
 		template.h tree_copy.h tree_walk.h \
 		makefile -print | cpio -oc > cfront.cpio
 
+# speedup
+MAKEFLAGS += --no-builtin-rules
 
+# debug print a variable in this makefile (e.g. `make print-O_FILES`)
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
