@@ -1,6 +1,6 @@
 /*ident	"@(#)cls4:src/node_classes.h	1.7" */
 /*******************************************************************************
- 
+
 C++ source for the C++ Language System, Release 3.0.  This product
 is a new release of the original cfront developed in the computer
 science research center of AT&T Bell Laboratories.
@@ -15,11 +15,11 @@ any actual or intended publication of such source code.
 
 *******************************************************************************/
 /******************************************************************************
-*    Copyright (c) 1989 by Object Design, Inc., Burlington, Mass.
-*    All rights reserved.
-*******************************************************************************/
-/* 
- * node_classes.h 
+ *    Copyright (c) 1989 by Object Design, Inc., Burlington, Mass.
+ *    All rights reserved.
+ *******************************************************************************/
+/*
+ * node_classes.h
  */
 
 #ifndef _node_classes
@@ -53,10 +53,10 @@ enum node_class {
     nc_tpdef = 18,
     nc_ktable = 19,
 };
-    
-/* 
-	searching this is slower than a directly indexed array,
-	but this is more maintainable. We can speed it up later. 
+
+/*
+        searching this is slower than a directly indexed array,
+        but this is more maintainable. We can speed it up later.
 */
 
 #ifdef DEFINE_TOKEN_CLASS_TABLE
@@ -144,7 +144,7 @@ struct token_class {
     { RC, nc_unused },
     { INLINE, nc_fct },
     { OVERLOAD, nc_gen },
-    { VIRTUAL, nc_fct },	/* but might be a basecl */
+    { VIRTUAL, nc_fct }, /* but might be a basecl */
     { COERCE, nc_unused },
     { PROTECTED, nc_name },
     { ID, nc_unused },
@@ -152,7 +152,7 @@ struct token_class {
     { ICON, nc_expr },
     { FCON, nc_expr },
     { CCON, nc_expr },
-    { NAME, nc_name },		/* but might be basecl */
+    { NAME, nc_name }, /* but might be basecl */
     { ZERO, nc_expr },
     { ASOP, nc_expr },
     { RELOP, nc_expr },
@@ -190,7 +190,7 @@ struct token_class {
     { ASOR, nc_expr },
     { ASER, nc_expr },
     { ASLS, nc_expr },
-    { ASRS, nc_expr },    
+    { ASRS, nc_expr },
     { ARG, nc_basetype },
     { ZTYPE, nc_basetype },
     { ARGT, nc_basetype },
@@ -245,7 +245,7 @@ struct token_class {
 };
 #endif
 
-node_class classify_node (Pnode, int&);
-node_class classify_node (Pnode);
+node_class classify_node(Pnode, int &);
+node_class classify_node(Pnode);
 
 #endif

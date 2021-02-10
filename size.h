@@ -1,6 +1,6 @@
 /*ident	"@(#)cls4:src/size.h	1.6" */
 /*******************************************************************************
- 
+
 C++ source for the C++ Language System, Release 3.0.  This product
 is a new release of the original cfront developed in the computer
 science research center of AT&T Bell Laboratories.
@@ -14,15 +14,15 @@ Laboratories, Inc.  The copyright notice above does not evidence
 any actual or intended publication of such source code.
 
 size.h:
-	sizes and alignments used to calculate sizeofs
+        sizes and alignments used to calculate sizeofs
 
-	table and butffer sizes
+        table and butffer sizes
 
 ***************************************************************************/
 #ifndef GRAM
 extern int BI_IN_WORD;
 extern int BI_IN_BYTE;
-				/*	byte sizes */
+/*	byte sizes */
 extern int SZ_CHAR;
 extern int AL_CHAR;
 
@@ -44,11 +44,11 @@ extern int AL_DOUBLE;
 extern int SZ_LDOUBLE;
 extern int AL_LDOUBLE;
 
-extern int SZ_STRUCT;	/* minimum struct size */
+extern int SZ_STRUCT; /* minimum struct size */
 extern int AL_STRUCT;
 
-//extern SZ_FRAME;
-//extern AL_FRAME;
+// extern SZ_FRAME;
+// extern AL_FRAME;
 
 extern int SZ_WORD;
 
@@ -56,17 +56,17 @@ extern int SZ_WPTR;
 extern int AL_WPTR;
 
 extern int SZ_BPTR;
-extern int AL_BPTR;	
+extern int AL_BPTR;
 
-//extern SZ_TOP;
-//extern SZ_BOTTOM;
+// extern SZ_TOP;
+// extern SZ_BOTTOM;
 
-extern char* LARGEST_INT;
-extern int F_SENSITIVE;	// is field alignment sensitive to the type of the field?
-extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
+extern char *LARGEST_INT;
+extern int F_SENSITIVE; // is field alignment sensitive to the type of the field?
+extern int F_OPTIMIZED; // can the compiler fit a small int field into a char?
 #endif
-				// default sizes:
-	// Note: #if doesn't work on all systems
+    // default sizes:
+// Note: #if doesn't work on all systems
 #ifdef u3b
 #define Abbb
 #endif
@@ -82,7 +82,6 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #ifdef pyr
 #define Abbb
 #endif
-
 
 #ifdef alliant
 #define Am68
@@ -109,7 +108,7 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define mips
 
 #ifdef Abbb
-				/* AT&T 3Bs */
+/* AT&T 3Bs */
 #define DBI_IN_WORD 32
 #define DBI_IN_BYTE 8
 #define DSZ_CHAR 1
@@ -137,14 +136,14 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_BPTR 4
 //#define DSZ_TOP 0
 //#define DSZ_BOTTOM 0
-#define DLARGEST_INT "2147483647"	/* 2**31 - 1 */
+#define DLARGEST_INT "2147483647" /* 2**31 - 1 */
 #define DF_SENSITIVE 0
 #define DF_OPTIMIZED 1
 #else
 #ifdef Am68
-				/* most M68K boxes */
+/* most M68K boxes */
 #if defined(hp9000s200) || defined(hp9000s300)
-#define DBI_IN_WORD 16 
+#define DBI_IN_WORD 16
 #else
 #define DBI_IN_WORD 16
 #endif
@@ -174,12 +173,12 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_BPTR 2
 //#define DSZ_TOP 0
 //#define DSZ_BOTTOM 0
-#define DLARGEST_INT "2147483647"	/* 2**31 - 1 */
+#define DLARGEST_INT "2147483647" /* 2**31 - 1 */
 #define DF_SENSITIVE 0
 #define DF_OPTIMIZED 1
 #else
 #ifdef Ai286l
-				/* Intel 80286 large model */
+/* Intel 80286 large model */
 #define DBI_IN_WORD 16
 #define DBI_IN_BYTE 8
 #define DSZ_CHAR 1
@@ -207,12 +206,12 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_BPTR 2
 //#define DSZ_TOP 0
 //#define DSZ_BOTTOM 0
-#define DLARGEST_INT "32767"	/* 2**15 - 1 */
+#define DLARGEST_INT "32767" /* 2**15 - 1 */
 #define DF_SENSITIVE 0
 #define DF_OPTIMIZED 1
 #else
 #if defined(uts) || defined(sun4) || defined(sparc)
-				/* Amdahl running UTS */
+/* Amdahl running UTS */
 #define DBI_IN_WORD 32
 #define DBI_IN_BYTE 8
 #define DSZ_CHAR 1
@@ -236,7 +235,7 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_WPTR 4
 #define DSZ_BPTR 4
 #define DAL_BPTR 4
-#define DLARGEST_INT "2147483647"	/* 2**31 - 1 */
+#define DLARGEST_INT "2147483647" /* 2**31 - 1 */
 #if defined(uts)
 #define DF_SENSITIVE 1
 #else
@@ -244,8 +243,8 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #endif
 #define DF_OPTIMIZED 1
 #else
-#if defined(hpux) || defined(hp9000s800) 
-                                /* hp */
+#if defined(hpux) || defined(hp9000s800)
+/* hp */
 #define DBI_IN_WORD 32
 #define DBI_IN_BYTE 8
 #define DSZ_CHAR 1
@@ -259,22 +258,22 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DSZ_FLOAT 4
 #define DAL_FLOAT 4
 #define DSZ_DOUBLE 8
-#define DAL_DOUBLE 8 
+#define DAL_DOUBLE 8
 #define DSZ_LDOUBLE 8
 #define DAL_LDOUBLE 8
-#define DSZ_STRUCT 1 
-#define DAL_STRUCT 1 
+#define DSZ_STRUCT 1
+#define DAL_STRUCT 1
 #define DSZ_WORD 4
 #define DSZ_WPTR 4
 #define DAL_WPTR 4
 #define DSZ_BPTR 4
 #define DAL_BPTR 4
-#define DLARGEST_INT "2147483647"       /* 2**31 - 1 */
-#define DF_SENSITIVE 1 
+#define DLARGEST_INT "2147483647" /* 2**31 - 1 */
+#define DF_SENSITIVE 1
 #define DF_OPTIMIZED 1
 #else
 #if defined(vax) || defined(ibm032) || defined(_IBMR2) || defined(i386)
-				/* VAX, IBM 32, IBM RS/6000, Intel 386 */
+/* VAX, IBM 32, IBM RS/6000, Intel 386 */
 #define DBI_IN_WORD 32
 #define DBI_IN_BYTE 8
 #define DSZ_CHAR 1
@@ -302,7 +301,7 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_BPTR 4
 //#define DSZ_TOP 0
 //#define DSZ_BOTTOM 0
-#define DLARGEST_INT "2147483647"	/* 2**31 - 1 */
+#define DLARGEST_INT "2147483647" /* 2**31 - 1 */
 #define DF_SENSITIVE 0
 #define DF_OPTIMIZED 1
 #else
@@ -334,7 +333,7 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_BPTR 4
 //#define DSZ_TOP 0
 //#define DSZ_BOTTOM 0
-#define DLARGEST_INT "2147483647"       /* 2**31 - 1 */
+#define DLARGEST_INT "2147483647" /* 2**31 - 1 */
 #define DF_SENSITIVE 0
 #define DF_OPTIMIZED 1
 #else
@@ -355,8 +354,8 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DAL_FLOAT 4
 #define DSZ_DOUBLE 8
 #define DAL_DOUBLE 8
-#define DSZ_LDOUBLE 8 
-#define DAL_LDOUBLE 8 
+#define DSZ_LDOUBLE 8
+#define DAL_LDOUBLE 8
 #define DSZ_BPTR 4
 #define DAL_BPTR 4
 #define DSZ_WPTR 4
@@ -366,7 +365,7 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #define DF_SENSITIVE 0
 #define DF_OPTIMIZED 1
 #else
-				/* defaults: 0 => error */
+/* defaults: 0 => error */
 #define DBI_IN_WORD 0
 #define DBI_IN_BYTE 0
 #define DSZ_CHAR 1
@@ -402,14 +401,14 @@ extern int F_OPTIMIZED;	// can the compiler fit a small int field into a char?
 #endif
 #endif
 
-#define KTBLSIZE	123	/*	initial keyword table size */
-#define GTBLSIZE	257	/*	initial global name table size */
-#define CTBLSIZE	12	/*	initial class table size */
-#define TBLSIZE		20	/*	initial block table size */
-#define BLMAX		128	/*	max block nesting */
-#define MAXERR		13	/* maximum number of errors before terminating */
+#define KTBLSIZE 123 /*	initial keyword table size */
+#define GTBLSIZE 257 /*	initial global name table size */
+#define CTBLSIZE 12  /*	initial class table size */
+#define TBLSIZE 20   /*	initial block table size */
+#define BLMAX 128    /*	max block nesting */
+#define MAXERR 13    /* maximum number of errors before terminating */
 
 #ifndef GRAM
-const int CHUNK = 8*1024;
-void* chunk(int);
+const int CHUNK = 8 * 1024;
+void *chunk(int);
 #endif

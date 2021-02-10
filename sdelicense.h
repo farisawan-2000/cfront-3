@@ -33,7 +33,7 @@
  *	architectures other than suns.  Original by Terry Anderson
  */
 
-/* 
+/*
  *	Constants for flags
  *
  *	 flags && NOEXIT -> will not exit on error
@@ -43,7 +43,7 @@
 #define NOEXIT 1
 #define NOMSG 2
 
-/*	
+/*
  *	Constants for return codes from sde_check_license()
  *
  *	SDE_EXPIRE_WARNING -> ok today, will expire within time
@@ -56,10 +56,10 @@
  *	SDE_OKAY	   -> ok today and within expiration warning
  */
 
-#define SDE_EXPIRE_WARNING  1
-#define SDE_ERROR	   -1
-#define SDE_EXPIRED	   -2
-#define SDE_OKAY	    0
+#define SDE_EXPIRE_WARNING 1
+#define SDE_ERROR -1
+#define SDE_EXPIRED -2
+#define SDE_OKAY 0
 
 /*
  *	Function prototypes
@@ -71,10 +71,10 @@ extern "C" {
 
 #if (defined(__cplusplus) || defined(__STDC__))
 const char *sde_license_msg();
-      int   sde_check_license(const char *tool, int tnum, int flags);
+int sde_check_license(const char *tool, int tnum, int flags);
 #else
-      char *sde_license_msg();
-      int   sde_check_license();
+char *sde_license_msg();
+int sde_check_license();
 #endif /* (defined(__cplusplus) || defined(__STDC__)) */
 
 #ifdef __cplusplus

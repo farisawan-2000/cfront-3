@@ -1,6 +1,6 @@
 /*ident	"@(#)cls4:src/overload.h	1.4" */
 /*******************************************************************************
- 
+
 C++ source for the C++ Language System, Release 3.0.  This product
 is a new release of the original cfront developed in the computer
 science research center of AT&T Bell Laboratories.
@@ -34,16 +34,17 @@ extern int ambig;
 extern int no_const;
 extern int non_const;
 
-inline int min(int i, int j) { return i<j ? i : j; }
+inline int min(int i, int j) {
+    return i < j ? i : j;
+}
 
 Blockdeclare(Pname);
 typedef Block(Pname) BlockPname;
-Blockdeclare(BlockPname)
-Blockdeclare(int)
+Blockdeclare(BlockPname) Blockdeclare(int)
 
-extern Pname hier_dominates(Pname, Pname);
+    extern Pname hier_dominates(Pname, Pname);
 extern Pname bestOfPair(Pname, Pname, Ptype);
 extern int matchable(Pname, Pexpr, int);
-extern Bits best_conv(const Block(Pname)&, int&, bit);
+extern Bits best_conv(const Block(Pname) &, int &, bit);
 
-extern void fmError(int, const Block(Pname)&, Pexpr, bit=0);
+extern void fmError(int, const Block(Pname) &, Pexpr, bit = 0);

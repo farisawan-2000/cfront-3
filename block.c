@@ -1,6 +1,6 @@
 /*ident	"@(#)cls4:src/block.c	1.3" */
 /*******************************************************************************
- 
+
 C++ source for the C++ Language System, Release 3.0.  This product
 is a new release of the original cfront developed in the computer
 science research center of AT&T Bell Laboratories.
@@ -18,15 +18,8 @@ any actual or intended publication of such source code.
 #include "Block.h"
 #include "cfront.h"
 
-Blockdeclare(Pname)
-typedef Block(Pname) BlockPname;
-Blockdeclare(BlockPname)
-Blockdeclare(int)
-Blockdeclare(Pchar)
-Blockdeclare(short)
+Blockdeclare(Pname) typedef Block(Pname) BlockPname;
+Blockdeclare(BlockPname) Blockdeclare(int) Blockdeclare(Pchar) Blockdeclare(short)
 
-Blockimplement(Pname)
-Blockimplement(int)
-Blockimplement(BlockPname)
-Blockimplement(Pchar)
-Blockimplement(short)
+    Blockimplement(Pname) Blockimplement(int) Blockimplement(BlockPname) Blockimplement(Pchar)
+        Blockimplement(short)
