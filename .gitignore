@@ -1,0 +1,6 @@
+*.o
+build/*
+cfront
+demangler/*.o
+demangler/c++filt
+y.tab.c
