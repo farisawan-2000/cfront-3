@@ -12,6 +12,8 @@ This repo contains the source of `cfront` and the `c++filt` demangler. It's curr
  - Get SGI `yacc` and qemu-irix (cloning and building Kirby 64 decomp will get you both of these)
  - Build with `make IRIX_ROOT=path/to/kirby64/tools/ido7.1/`
 
+## Running
+ - `./cfront < source_file.cc > out_processed.c`
 
 ## Contributing
 
